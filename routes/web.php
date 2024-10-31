@@ -8,7 +8,6 @@ Route::redirect('/', '/dashboard');
 
 Route::get('dashboard', [UserController::class, 'user_index'])->middleware(['auth', 'verified'])
 ->name('dashboard');
-// Route::get('usertbl', [UserController::class, 'usertbl']);
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
