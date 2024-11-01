@@ -54,6 +54,7 @@ class UserComponent extends Component
 
         if($this->id){
             $obj = User::find($this->id);
+            $obj->password = $obj->password;
             $this->validate([
                 'name' => ['required', 'string', 'min:3', 'max:50'],
                 'apellido' => ['required', 'string', 'min:3', 'max:50'],
@@ -70,12 +71,12 @@ class UserComponent extends Component
                 'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
                 'contrasena' => ['required', 'string'],
             ]);
+            $obj->password = bcrypt($this->contrasena);
         }
         $obj->name = $this->name;
         $obj->apellido = $this->apellido;
         $obj->email = $this->email;
         $obj->phone = $this->phone;
-        $obj->password = bcrypt($this->contrasena);
         $obj->save();
         $this->clearfields();
         $this->modal = false;
