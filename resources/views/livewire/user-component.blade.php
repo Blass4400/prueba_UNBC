@@ -21,7 +21,7 @@
                     <td>{{$user->email}}</td>
                     <td>
                         <button wire:click.prevent="editUser({{$user->id}})" class="btn btn-primary">Editar</button>
-                        <button wire:click.prevent="deleteUser({{$user->id}})" class="btn btn-danger">Eliminar</button>
+                        <button wire:click.prevent="deleteUser({{$user->id}})" wire:confirm="Deseas eliminar este usuario?" class="btn btn-danger">Eliminar</button>
                     </td>
                 </tr>
             @endforeach
